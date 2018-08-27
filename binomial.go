@@ -5,7 +5,6 @@ package combinatorics
 
 import (
 	"errors"
-	"fmt"
 )
 
 // ErrKbiggerThanN means k is outside of [0,n]
@@ -30,12 +29,16 @@ func Nchoosek(n, k int) (int, error) {
 
 	var array [][]int
 
-	array = make([][]int, n)
+	array = make([][]int, n+1)
 	for i, _ := range array {
-		array[i] = make([]int, k)
+		array[i] = make([]int, k+1)
 		array[i][0] = 1
 	}
-	fmt.Printf("%v\n", array)
+	for i := 1; i <= n; i++ {
+		for j := 1; j <= k; j++ {
+			array[i][j] = array[i-1][j-1] + array[i-1][j] // Pascal's triangle
+		}
+	}
 
-	return 1, nil
+	return array[n][k], nil
 }

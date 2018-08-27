@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-var nchoosekFixtures = []struct {
+var fixturesHappyPath = []struct {
 	n        int
 	k        int
 	expected int
@@ -22,13 +22,37 @@ var nchoosekFixtures = []struct {
 	{6, 4, 15},
 	{6, 5, 6},
 	{6, 6, 1},
+	{10, 2, 45},
+	{1000, 2, 499500},
 }
 
-func TestNchoosek(t *testing.T) {
-	for _, tt := range nchoosekFixtures {
+func TestHappyPath(t *testing.T) {
+	for _, tt := range fixturesHappyPath {
 		reality, _ := Nchoosek(tt.n, tt.k)
 		if reality != tt.expected {
 			t.Errorf("Nchoosek(%v, %v): expected %v, actual %v", tt.n, tt.k, tt.expected, reality)
+		}
+	}
+}
+
+var fixturesSadPath = []struct {
+	n        int
+	k        int
+	expected error
+}{
+	{-1, 1, ErrNegativeArgument},
+	{1, -1, ErrNegativeArgument},
+	{-1, -1, ErrNegativeArgument},
+	{0, 1, ErrKbiggerThanN},
+	{1, 2, ErrKbiggerThanN},
+	{1, 1, nil},
+}
+
+func TestSadPath(t *testing.T) {
+	for _, tt := range fixturesSadPath {
+		_, err := Nchoosek(tt.n, tt.k)
+		if err != tt.expected {
+			t.Errorf("Nchoosek(%v, %v): expected %v, actual %v", tt.n, tt.k, tt.expected, err)
 		}
 	}
 }
