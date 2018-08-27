@@ -1,4 +1,4 @@
-// Copyright 2018 Gavin Chun Jin. All rights reserved.
+// Copyright © 2018 Gavin Chun Jin. All rights reserved.
 // Use of this source code is governed by the MIT
 // license that can be found in the LICENSE file.
 package combinatorics
@@ -26,7 +26,7 @@ var nchoosekFixtures = []struct {
 
 func TestNchoosek(t *testing.T) {
 	for _, tt := range nchoosekFixtures {
-		reality := Nchoosek(tt.n, tt.k)
+		reality, _ := Nchoosek(tt.n, tt.k)
 		if reality != tt.expected {
 			t.Errorf("Nchoosek(%v, %v): expected %v, actual %v", tt.n, tt.k, tt.expected, reality)
 		}
