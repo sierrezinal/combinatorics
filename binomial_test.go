@@ -56,3 +56,15 @@ func TestSadPath(t *testing.T) {
 		}
 	}
 }
+
+func benchmark(i int, b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Nchoosek(10, i)
+	}
+}
+
+func BenchmarkNchoosek1(b *testing.B) { benchmark(1, b) }
+func BenchmarkNchoosek2(b *testing.B) { benchmark(2, b) }
+func BenchmarkNchoosek4(b *testing.B) { benchmark(4, b) }
+func BenchmarkNchoosek5(b *testing.B) { benchmark(5, b) }
+func BenchmarkNchoosek8(b *testing.B) { benchmark(8, b) }

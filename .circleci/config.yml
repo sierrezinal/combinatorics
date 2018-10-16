@@ -1,0 +1,11 @@
+# Ref https://circleci.com/docs/2.0/language-go/
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.10
+    working_directory: /go/src/github.com/sierrezinal/combinatorics
+    steps:
+      - checkout
+      - run: go get -v -t -d ./...
+      - run: go test -v ./...

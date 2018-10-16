@@ -15,4 +15,4 @@ gometa:
 	${GOBIN}/gometalinter --disable-all --enable=errcheck --enable=vet --enable=vetshadow ./...
 
 benchmark:
-	go test . -bench .
+	go test -bench .
