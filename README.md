@@ -1,1 +1,1 @@
-[![GoDoc](https://godoc.org/github.com/sierrezinal/combinatorics?status.png)](https://godoc.org/github.com/sierrezinal/combinatorics)
+[![GoDoc](https://godoc.org/github.com/sierrezinal/combinatorics?status.png)](https://godoc.org/github.com/sierrezinal/combinatorics) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](/LICENSE)
